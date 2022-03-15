@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Goals = require("../models/Goals");
 
-router.post("/goals", (req, res) => {
+router.post("/api/goals", (req, res) => {
   console.table(req.body);
 
   const newGoal = new Goals({
