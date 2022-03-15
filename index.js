@@ -25,11 +25,7 @@ const routes = require("./api/goals.js")
 app.get("/api/goals", routes);
 
 app.get("/", (req, res) => {
-  const goals = Goals.find().then((goals) => res.json(goals));
-});
-
-app.get("/t", (req, res) => {
-  const goals = Goals.find().then((goals) => res.json(goals));
+  console.log("Hello World");	
 });
 
 
