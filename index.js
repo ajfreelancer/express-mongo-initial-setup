@@ -8,12 +8,12 @@ require("dotenv/config");
 const app = express();
 
 console.log("Connecting to DB");
-  mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-      console.log("MongoDB Connected");
-    })
-    .catch((err) => console.log(err));
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
+  .catch((err) => console.log(err));
 
 app.use(bodyParser.json());
 
@@ -32,14 +32,15 @@ app.post("/goals", (req, res) => {
 // const routes = require("./api/goals.js")
 app.get("/api/goals", (req, res) => {
   console.log("get request for all goals");
-  const goals = Goals.find().then((goals) => res.json(goals));
+  const goals = Goals
+    .find()
+    .then((goals) => res.json(goals))
+    .catch((err) => res.json(err));
 });
-
 
 app.get("/", (req, res) => {
   res.json({ msg: "Welcome to the goals API" });
 });
-
 
 const PORT = process.env.PORT || 5050;
 //How do we start listening to the server
