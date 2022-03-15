@@ -30,5 +30,5 @@ app.get("/", (req, res) => {
 
 
 const PORT = process.env.PORT || 5050;
-//How do we start listening to the server?
+//How do we start listening to the server
 app.listen(PORT);
