@@ -2,10 +2,18 @@ const express = require("express");
 const connectDB = require("./backend/config/db");
 const bodyParser = require("body-parser");
 const Goals = require("./backend/models/Goals");
+const mongoose = require("mongoose");
+require("dotenv/config");
 
 const app = express();
 
-connectDB();
+console.log("Connecting to DB");
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log("MongoDB Connected");
+    })
+    .catch((err) => console.log(err));
 
 app.use(bodyParser.json());
 
@@ -21,8 +29,12 @@ app.post("/goals", (req, res) => {
 });
 
 //Retrieving all records from MongoDB
-const routes = require("./api/goals.js")
-app.get("/api/goals", routes);
+// const routes = require("./api/goals.js")
+app.get("/api/goals", (req, res) => {
+  console.log("get request for all goals");
+  const goals = Goals.find().then((goals) => res.json(goals));
+});
+
 
 app.get("/", (req, res) => {
   res.json({ msg: "Welcome to the goals API" });
