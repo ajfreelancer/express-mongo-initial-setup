@@ -25,7 +25,7 @@ const routes = require("./api/goals.js")
 app.get("/api/goals", routes);
 
 app.get("/", (req, res) => {
-  console.log("Hello World");	
+  res.json({ msg: "Welcome to the goals API" });
 });
 
 
