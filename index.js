@@ -21,9 +21,8 @@ app.post("/goals", (req, res) => {
 });
 
 //Retrieving all records from MongoDB
-app.get("/goals", (req, res) => {
-  const goals = Goals.find().then((goals) => res.json(goals));
-});
+const routes = require("./api/goals.js")
+app.get("/api/goals", routes);
 
 app.get("/", (req, res) => {
   const goals = Goals.find().then((goals) => res.json(goals));
