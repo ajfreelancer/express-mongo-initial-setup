@@ -28,6 +28,10 @@ app.get("/", (req, res) => {
   const goals = Goals.find().then((goals) => res.json(goals));
 });
 
+app.get("/t", (req, res) => {
+  const goals = Goals.find().then((goals) => res.json(goals));
+});
+
 
 const PORT = process.env.PORT || 5050;
 //How do we start listening to the server
