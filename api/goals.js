@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
 
 // For adding a record
 router.post("/", (req, res) => {
-  console.table(req.body);
 
   const newGoal = new Goals({
     title: req.body.title,
